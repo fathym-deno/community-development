@@ -1,0 +1,55 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "request": "launch",
+      "name": "Launch Program",
+      "type": "node",
+      "program": "${workspaceFolder}/main.ts",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno.exe",
+      "runtimeArgs": ["run", "--config", "./deno.jsonc", "--inspect-wait"]
+    },
+    {
+      "request": "launch",
+      "name": "Launch Test",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno.exe",
+      "runtimeArgs": [
+        "test",
+        "--inspect-wait",
+        "-A",
+        "tests/tests.ts"
+      ],
+      "attachSimplePort": 9229
+    },
+    {
+      "request": "launch",
+
+      /* modified: descriptive name */
+      "name": "Debug tests",
+
+      /* modified: was generated as "pwa-node", but VS Code shows me
+      a diagnostic warning for that value: "Please use type node instead(2)" */
+      "type": "node",
+
+      /* disabled specific entrypoint */
+      // "program": "${workspaceFolder}/main.ts",
+
+      "cwd": "${workspaceFolder}",
+
+      /* modified: using deno process name from my PATH */
+      "runtimeExecutable": "deno",
+
+      "runtimeArgs": [
+        "test",
+        "--inspect-brk",
+        "--allow-all",
+        "${file}"
+      ],
+
+      "attachSimplePort": 9229
+    }
+  ]
+}
